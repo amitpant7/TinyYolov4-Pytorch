@@ -4,7 +4,7 @@ from torchvision.ops import complete_box_iou_loss
 import torch.nn as nn
 
 from utils.utils import convert_to_corners
-from config import C, S, DEVICE, ANCHOR_BOXES
+from config import C, S, DEVICE, ANCHOR_BOXES, SCALE
 
 
 def label_smoothing(labels, smoothing_factor=0.1):
