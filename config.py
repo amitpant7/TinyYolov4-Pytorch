@@ -17,11 +17,6 @@ DEVICE = device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 BATCH_SIZE = batch_size = 16
 
 
-anchors = torch.tensor(
-    [(116, 90), (156, 198), (373, 326)], [(30, 61), (62, 45), (59, 119)]
-)
-
-
 ANCHOR_BOXES = A = torch.tensor(
     [
         [[0.2788, 0.2163], [0.3750, 0.4760], [0.8966, 0.7837]],
