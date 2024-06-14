@@ -27,10 +27,11 @@ class WIDERFaceDataset(Dataset):
         bboxes = annots["bbox"]
         labels = torch.ones(len(bboxes))
 
-        cx = (bboxes[:, 0] + bboxes[:, 2]) / 2.0
-        cy = (bboxes[:, 1] + bboxes[:, 3]) / 2.0
-        w = bboxes[:, 2] - bboxes[:, 0]
-        h = bboxes[:, 3] - bboxes[:, 1]
+        w = bboxes[:, 2]
+        h = bboxes[:, 3]
+
+        cx = bboxes[:, 0] + 0.5 * w
+        cy = bboxes[:, 1] + 0.5 * h
 
         bboxes = torch.stack((cx, cy, w, h), dim=1)
 
