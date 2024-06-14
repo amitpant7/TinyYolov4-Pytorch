@@ -137,7 +137,10 @@ def visualize_bb(samples):
             corr_bboxes
         )  # Convert to tensor for draw_bounding_boxes
         img_with_bbox = draw_bounding_boxes(
-            img, corr_bboxes, colors=[colors[label] for label in labels], width=3, 
+            img,
+            corr_bboxes,
+            colors=[colors[label] for label in labels],
+            width=3,
         )
         images.append(img_with_bbox)
 
@@ -182,6 +185,7 @@ def copy_wts(model, source_wts):
 
 import gc
 
+
 def check_model_accuracy(all_preds, all_targets, thres=0.5):
     """
     Calculate accuracy metrics over all batches of predictions and targets.
@@ -201,7 +205,7 @@ def check_model_accuracy(all_preds, all_targets, thres=0.5):
 
         sig = torch.nn.Sigmoid()
 
-        for scale in range(3):
+        for scale in range(len(S)):
             scale_class_corr, scale_total_class = 0, 0
             scale_obj_corr, scale_total_obj = 0, 0
             scale_no_obj_corr, scale_total_no_obj = 0, 0
@@ -245,5 +249,3 @@ def check_model_accuracy(all_preds, all_targets, thres=0.5):
     print("Class Score (Accuracy): {:.2f}%".format(class_score))
     print("Object Score (Recall): {:.2f}%".format(obj_recall))
     print("No-object Score (Recall): {:.2f}%".format(no_obj_recall))
-
-
