@@ -38,7 +38,7 @@ class WIDERFaceDataset(Dataset):
             bboxes, format="CXCYWH", canvas_size=img.shape[-2:]
         )
 
-        sample = {"image": img, "labels": torch.tensor(labels), "bboxes": bboxes}
+        sample = {"image": img, "labels": labels, "bboxes": bboxes}
 
         if self.transforms is not None:
             image, targets = self.transforms(sample)
