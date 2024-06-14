@@ -45,7 +45,7 @@ class Conv2dBatchLeaky(nn.Module):
                     bias=False,
                 ),
                 nn.BatchNorm2d(self.out_channels),
-                nn.LeakyReLU(self.leaky_slope, inplace=True),
+                nn.LeakyReLU(self.leaky_slope),
             )
 
     def __repr__(self):

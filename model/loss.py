@@ -4,7 +4,7 @@ from torchvision.ops import complete_box_iou_loss
 import torch.nn as nn
 
 from utils.utils import convert_to_corners
-from config import C, S, DEVICE, ANCHOR_BOXES, SCALE
+from config import C, S, DEVICE, ANCHOR_BOXES
 
 
 def label_smoothing(labels, smoothing_factor=0.1):
@@ -88,7 +88,7 @@ class YoloV4_Loss(torch.nn.Module):
         super().__init__()
         self.device = device
         self.lambda_no_obj = torch.tensor(1.0, device=device)
-        self.lambda_obj = torch.tensor(8.0, device=device)
+        self.lambda_obj = torch.tensor(10.0, device=device)
         self.lambda_class = torch.tensor(10.0, device=device)  # 7 without focal
         self.lambda_bb = torch.tensor(1.5, device=device)
 
@@ -175,7 +175,7 @@ class YoloV4_Loss(torch.nn.Module):
 
                 # class_loss = self.logistic_loss(pred[obj][..., 5:], ground_truth[obj][..., 5:])
                 smoothed_class = label_smoothing(
-                    ground_truth[obj][..., 5:], smoothing_factor=0.15
+                    ground_truth[obj][..., 5:], smoothing_factor=0.1
                 )
                 class_loss = self.focal(pred[obj][..., 5:], smoothed_class)
 
