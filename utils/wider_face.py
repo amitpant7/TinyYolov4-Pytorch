@@ -100,7 +100,7 @@ class FinalTranform(torch.nn.Module):
                         torch.log(bh_by_ph + epsilon),
                     ]
                 )
-                target[pos[0], pos[1], assigned_anchor_box, 5 + int(label)] = 1
+                target[pos[0], pos[1], assigned_anchor_box, 5] = 1
 
                 to_exclude.append(assigned_anchor_box)
 
