@@ -14,7 +14,7 @@ SCALE = [32, 16]
 
 DEVICE = device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-BATCH_SIZE = batch_size = 128
+BATCH_SIZE = batch_size = 64
 
 
 ANCHOR_BOXES = A = torch.tensor(
