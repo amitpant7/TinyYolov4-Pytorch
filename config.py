@@ -33,4 +33,4 @@ CLASS_ENCODING = class_encoding = {
 
 class_decoding = {v: k for k, v in class_encoding.items()}
 
-COLORS = ["#0000FF"]
+COLORS = ["#0000FF", "#0000FF"]

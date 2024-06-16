@@ -1,10 +1,10 @@
 import torch
 from torchvision.transforms import v2
-from .dataset import MyCustomTransformatioms, FinalTranform
+from .wider_face import FinalTranform
 from torchvision import tv_tensors
 
 
-#for wideface dagtaset
+# for wideface dagtaset
 
 transformations = v2.Compose(
     [

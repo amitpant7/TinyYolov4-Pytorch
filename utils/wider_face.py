@@ -149,9 +149,9 @@ def match_anchor_box(
     best = torch.argmax(iou, dim=0).item()
 
     # I want to not assign anchor if the IOU is below this.
-    print(iou)
-    if iou[best] < 0.1:
-        best = None
+    # print(iou)
+    # if iou[best] < 0.1:
+    #     best = None
 
     # Ignore anchors if they have high IOU but are not the best match
     ignore_indices = torch.nonzero((iou > ignore) & (iou != iou[best])).squeeze()
