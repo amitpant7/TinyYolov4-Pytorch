@@ -2,6 +2,7 @@ import torch
 from torchvision.transforms import v2
 from .wider_face import FinalTranform
 from torchvision import tv_tensors
+from .dataset import MyCustomTransformatioms
 
 
 # for wideface dagtaset
