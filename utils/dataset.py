@@ -69,7 +69,9 @@ class FinalTranform(torch.nn.Module):
         # for every scale[13,26,52]:
 
         for i in range(len(S)):
-            to_exclude = []  # we won't assign same anchor box multiple times.
+            to_exclude = torch.zeros(
+                (S[i], S[i], N)
+            )  # we won't assign same anchor box multiple times.
 
             target = torch.zeros(S[i], S[i], N, 1 + 4 + C)  # S*S*N, 1+4+C
 
@@ -106,7 +108,7 @@ class FinalTranform(torch.nn.Module):
                 )
                 target[pos[0], pos[1], assigned_anchor_box, 5 + int(label)] = 1
 
-                to_exclude.append(assigned_anchor_box)
+                to_exclude[pos[0], pos[1], assigned_anchor_box] = 1
 
                 try:
                     for value in ignore_indices:
@@ -140,7 +142,7 @@ def match_anchor_box(
     anchor_boxes = ANCHOR_BOXES[i]
     iou = []
     for i, box in enumerate(anchor_boxes):
-        if i in to_exclude:
+        if to_exclude[i] == 1:
             iou.append(0)
             continue
         intersection_width = min(box[0], bbox_w)  # Scale up as h, w in range 0-13

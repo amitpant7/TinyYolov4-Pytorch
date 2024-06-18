@@ -1,12 +1,11 @@
 import torch
 import torchvision
+from config import *
 
 from torch.utils.data import Dataset
 import torch.nn as nn
 from torchvision.transforms import v2
 from torchvision import tv_tensors
-
-from config import *
 
 
 class WIDERFaceDataset(Dataset):
@@ -15,8 +14,10 @@ class WIDERFaceDataset(Dataset):
         super().__init__()
         self.transforms = transforms
         self.dataset = torchvision.datasets.WIDERFace(
-            root="./data/", split=split, download=True
+            root = '/kaggle/input/wider-face-torchvision-compatible/', split=split, download = False,
         )
+        
+        
 
     def __len__(self):
         return len(self.dataset)
@@ -65,7 +66,7 @@ class FinalTranform(torch.nn.Module):
         # for every scale[13,26,52]:
 
         for i in range(len(S)):
-            to_exclude = []  # we won't assign same anchor box multiple times.
+            to_exclude = torch.zeros((S[i], S[i], N))  # we won't assign same anchor box multiple times.
 
             target = torch.zeros(S[i], S[i], N, 1 + 4 + C)  # S*S*N, 1+4+C
 
@@ -76,7 +77,7 @@ class FinalTranform(torch.nn.Module):
                 box_width, box_height = bbox[2] / SCALE[i], bbox[3] / SCALE[i]
 
                 assigned_anchor_box, ignore_indices = match_anchor_box(
-                    box_width, box_height, i, to_exclude
+                    box_width, box_height, i, to_exclude[pos[0],pos[1]]
                 )
 
                 if assigned_anchor_box is None:
@@ -102,7 +103,7 @@ class FinalTranform(torch.nn.Module):
                 )
                 target[pos[0], pos[1], assigned_anchor_box, 5] = 1
 
-                to_exclude.append(assigned_anchor_box)
+                to_exclude[pos[0],pos[1],assigned_anchor_box] = 1
 
                 try:
                     for value in ignore_indices:
@@ -136,7 +137,7 @@ def match_anchor_box(
     anchor_boxes = ANCHOR_BOXES[i]
     iou = []
     for i, box in enumerate(anchor_boxes):
-        if i in to_exclude:
+        if to_exclude[i]==1:
             iou.append(0)
             continue
         intersection_width = min(box[0], bbox_w)  # Scale up as h, w in range 0-13
@@ -147,12 +148,12 @@ def match_anchor_box(
 
     iou = torch.tensor(iou)
     best = torch.argmax(iou, dim=0).item()
-
+    
+#     print(iou[best])
     # I want to not assign anchor if the IOU is below this.
-    # print(iou)
-    # if iou[best] < 0.1:
-    #     best = None
-
+    
+    if iou[best] < 0.4:
+        best = None
     # Ignore anchors if they have high IOU but are not the best match
     ignore_indices = torch.nonzero((iou > ignore) & (iou != iou[best])).squeeze()
 
