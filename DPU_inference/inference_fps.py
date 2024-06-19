@@ -15,42 +15,28 @@ import numpy as np
 from dpu_utils import process_preds, non_max_suppression
 
 
-SCALE = [32, 16, 8]
-S = [13, 26, 52]
+SCALE = [32, 16]
+S = [13, 26]
 
 ANCHORS = (
     np.array(
         [
-            [(0.28, 0.22), (0.38, 0.48), (0.9, 0.78)],
-            [(0.07, 0.15), (0.15, 0.11), (0.14, 0.29)],
-            [(0.02, 0.03), (0.04, 0.07), (0.08, 0.06)],
+            [
+                [0.04669265, 0.07010818],
+                [0.08200667, 0.11690065],
+                [0.19566397, 0.2667503],
+            ],
+            [
+                [0.01401189, 0.02136289],
+                [0.02018682, 0.03110242],
+                [0.02997164, 0.04524642],
+            ],
         ]
     )
     * np.array([[S]]).T
 )  # Scaling up to S range
 
-CLASSES = [
-    "person",
-    "bird",
-    "cat",
-    "cow",
-    "dog",
-    "horse",
-    "sheep",
-    "aeroplane",
-    "bicycle",
-    "boat",
-    "bus",
-    "car",
-    "motorbike",
-    "train",
-    "bottle",
-    "chair",
-    "diningtable",
-    "pottedplant",
-    "sofa",
-    "tvmonitor",
-]
+CLASSES = ["face"]
 
 W, H = 416, 416
 

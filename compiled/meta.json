@@ -1,0 +1,8 @@
+{
+    "lib": "libvart-dpu-runner.so",
+    "filename": "tinyyolov4.xmodel",
+    "kernel": [
+        "subgraph_TinyYoloV4__TinyYoloV4_CSPTiny_backbone__CSPBlock_stage3__Conv2dBatchLeaky_conv1__Sequential_layers__Conv2d_0__ret_15"
+    ],
+    "target": "DPUCZDX8G_ISA1_B4096"
+}

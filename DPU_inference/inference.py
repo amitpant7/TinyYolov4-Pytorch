@@ -15,42 +15,28 @@ import numpy as np
 from dpu_utils import process_preds, non_max_suppression
 
 
-SCALE = [32, 16, 8]
-S = [13, 26, 52]
+SCALE = [32, 16]
+S = [13, 26]
 
 ANCHORS = (
     np.array(
         [
-            [(0.28, 0.22), (0.38, 0.48), (0.9, 0.78)],
-            [(0.07, 0.15), (0.15, 0.11), (0.14, 0.29)],
-            [(0.02, 0.03), (0.04, 0.07), (0.08, 0.06)],
+            [
+                [0.04669265, 0.07010818],
+                [0.08200667, 0.11690065],
+                [0.19566397, 0.2667503],
+            ],
+            [
+                [0.01401189, 0.02136289],
+                [0.02018682, 0.03110242],
+                [0.02997164, 0.04524642],
+            ],
         ]
     )
     * np.array([[S]]).T
 )  # Scaling up to S range
 
-CLASSES = [
-    "person",
-    "bird",
-    "cat",
-    "cow",
-    "dog",
-    "horse",
-    "sheep",
-    "aeroplane",
-    "bicycle",
-    "boat",
-    "bus",
-    "car",
-    "motorbike",
-    "train",
-    "bottle",
-    "chair",
-    "diningtable",
-    "pottedplant",
-    "sofa",
-    "tvmonitor",
-]
+CLASSES = ["face"]
 
 W, H = 416, 416
 
@@ -58,7 +44,7 @@ MEANS = np.array([0.485, 0.456, 0.406])
 STD = np.array([0.229, 0.224, 0.225])
 
 
-def runYolo(dpu_runner, image, image_path, name, conf=0.85):
+def runYolo(dpu_runner, image, image_path, name, conf=0.75):
 
     inputTensors = dpu_runner.get_input_tensors()  #  get the model input tensor
     outputTensors = dpu_runner.get_output_tensors()  # get the model ouput tensor
@@ -74,14 +60,8 @@ def runYolo(dpu_runner, image, image_path, name, conf=0.85):
     outputanchors_1 = outputTensors[1].dims[3]
     outputpreds_1 = outputTensors[1].dims[4]
 
-    outputHeight_2 = outputTensors[2].dims[1]
-    outputWidth_2 = outputTensors[2].dims[2]
-    outputanchors_2 = outputTensors[2].dims[3]
-    outputpreds_2 = outputTensors[2].dims[4]
-
     outputSize_0 = [outputHeight_0, outputWidth_0, outputanchors_0, outputpreds_0]
     outputSize_1 = [outputHeight_1, outputWidth_1, outputanchors_1, outputpreds_1]
-    outputSize_2 = [outputHeight_2, outputWidth_2, outputanchors_2, outputpreds_2]
 
     runSize = 1
     shapeIn = (runSize,) + tuple(
@@ -102,13 +82,6 @@ def runYolo(dpu_runner, image, image_path, name, conf=0.85):
     outputData.append(
         np.empty(
             tuple([runSize] + outputSize_1),
-            dtype=np.float32,
-            order="C",
-        )
-    )
-    outputData.append(
-        np.empty(
-            tuple([runSize] + outputSize_2),
             dtype=np.float32,
             order="C",
         )
@@ -134,7 +107,6 @@ def runYolo(dpu_runner, image, image_path, name, conf=0.85):
 
     # processing rawoutputs of model and converting from tensors(in range 0-1) to pixel values for bb
 
-    outputData = reversed(outputData)
     output_list = process_preds(outputData, S, SCALE, anchor_boxes=ANCHORS)
 
     # filtering outputs based on confidance
@@ -147,7 +119,7 @@ def runYolo(dpu_runner, image, image_path, name, conf=0.85):
 
     # Perform Non Max Supression
 
-    bboxes, pred_conf, pred_labels = non_max_suppression(output_arr, iou_threshold=0.4)
+    bboxes, pred_conf, pred_labels = non_max_suppression(output_arr, iou_threshold=0.2)
 
     print("Output Boxes:", bboxes, "Confidance:", pred_conf, "Classes:", pred_labels)
 
@@ -203,10 +175,10 @@ def runYolo(dpu_runner, image, image_path, name, conf=0.85):
     output_path = f"test_results/{name}"
     cv2.imwrite(output_path, im)
 
-    # # Display image
-    # cv2.imshow("Prediction", im)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    # Display image
+    cv2.imshow("Prediction", im)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 def get_child_subgraph_dpu(graph: "Graph") -> List["Subgraph"]:

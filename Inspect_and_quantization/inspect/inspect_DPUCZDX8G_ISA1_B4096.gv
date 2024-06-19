@@ -1,0 +1,424 @@
+digraph TinyYoloV4 {
+	input_0 [label="type:nndct_input
+name:TinyYoloV4::input_0
+assigned device:user
+out shape:[[1, 416, 416, 3]]" color=black]
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3
+assigned device:dpu
+out shape:[[1, 208, 208, 32]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/LeakyReLU[2]/ret.7" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/LeakyReLU[2]/ret.7
+assigned device:dpu
+out shape:[[1, 208, 208, 32]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/Conv2d[0]/ret.9" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/Conv2d[0]/ret.9
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/LeakyReLU[2]/ret.13" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/LeakyReLU[2]/ret.13
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.15" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.15
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.19" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.19
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.21" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.21
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.25" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.25
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.27" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.27
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.31" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.31
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.33" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.33
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.37" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.37
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.39" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.39
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.43" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.43
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.45" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.45
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.49" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.49
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.51" [label="type:nndct_elemwise_add
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.51
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.53" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.53
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.57" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.57
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.59" [label="type:nndct_concat
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.59
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool1]/8420" [label="type:nndct_maxpool
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool1]/8420
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.61" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.61
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.65" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.65
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.67" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.67
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.71" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.71
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.73" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.73
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.77" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.77
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.79" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.79
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.83" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.83
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.85" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.85
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.89" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.89
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.91" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.91
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.95" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.95
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.97" [label="type:nndct_elemwise_add
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.97
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.99" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.99
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.103" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.103
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.105" [label="type:nndct_concat
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.105
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool2]/8653" [label="type:nndct_maxpool
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool2]/8653
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.107" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.107
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.111" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.111
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.113" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.113
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.117" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.117
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.119" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.119
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.123" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.123
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.125" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.125
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.129" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.129
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.131" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.131
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.135" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.135
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.137" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.137
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.141" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.141
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.143" [label="type:nndct_elemwise_add
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.143
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.145" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.145
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.149" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.149
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.151" [label="type:nndct_concat
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.151
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool3]/8886" [label="type:nndct_maxpool
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool3]/8886
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/Conv2d[0]/ret.153" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/Conv2d[0]/ret.153
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/LeakyReLU[2]/ret.157" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/LeakyReLU[2]/ret.157
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/Conv2d[0]/ret.159" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/Conv2d[0]/ret.159
+assigned device:dpu
+out shape:[[1, 13, 13, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/LeakyReLU[2]/ret.163" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/LeakyReLU[2]/ret.163
+assigned device:dpu
+out shape:[[1, 13, 13, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/Conv2d[0]/ret.165" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/Conv2d[0]/ret.165
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/LeakyReLU[2]/ret.169" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/LeakyReLU[2]/ret.169
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/Conv2d[0]/ret.171" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/Conv2d[0]/ret.171
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/LeakyReLU[2]/ret.175" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/LeakyReLU[2]/ret.175
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/Conv2d[0]/ret.177" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/Conv2d[0]/ret.177
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/LeakyReLU[2]/ret.181" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/LeakyReLU[2]/ret.181
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Upsample[upsample]/ret.183" [label="type:nndct_resize
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Upsample[upsample]/ret.183
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/ret.185" [label="type:nndct_concat
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/ret.185
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/Conv2d[0]/ret.187" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/Conv2d[0]/ret.187
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/LeakyReLU[2]/ret.191" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/LeakyReLU[2]/ret.191
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/Conv2d[0]/ret.193" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/Conv2d[0]/ret.193
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/LeakyReLU[2]/ret.197" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/LeakyReLU[2]/ret.197
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.199" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.199
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.203" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.203
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.205" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.205
+assigned device:dpu
+out shape:[[1, 13, 13, 18]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.209" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.209
+assigned device:dpu
+out shape:[[1, 13, 13, 18]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.211" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.211
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.215" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.215
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.217" [label="type:nndct_conv2d
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.217
+assigned device:dpu
+out shape:[[1, 26, 26, 18]]" color=blue]
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.221" [label="type:nndct_leaky_relu
+name:TinyYoloV4::TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.221
+assigned device:dpu
+out shape:[[1, 26, 26, 18]]" color=blue]
+	"TinyYoloV4/ret.233" [label="type:nndct_reshape
+name:TinyYoloV4::TinyYoloV4/ret.233
+assigned device:dpu
+out shape:[[1, 13, 13, 3, 6]]" color=blue]
+	"TinyYoloV4/ret" [label="type:nndct_reshape
+name:TinyYoloV4::TinyYoloV4/ret
+assigned device:dpu
+out shape:[[1, 26, 26, 3, 6]]" color=blue]
+	return_0 [label="type:nndct_return
+name:TinyYoloV4::return_0
+assigned device:user
+out shape:[]" color=black]
+	input_0 -> "TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3"
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3" -> "TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/LeakyReLU[2]/ret.7"
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/LeakyReLU[2]/ret.7" -> "TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/Conv2d[0]/ret.9"
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/Conv2d[0]/ret.9" -> "TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/LeakyReLU[2]/ret.13"
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage2]/Sequential[layers]/LeakyReLU[2]/ret.13" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.15"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.15" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.19"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.19" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.21"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.21" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.25"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.25" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.27"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.25" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.33"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.27" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.31"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.31" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.59"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.33" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.37"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.37" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.39"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.37" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.51"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.39" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.43"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.43" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.45"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.45" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.49"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.49" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.51"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.51" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.53"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.53" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.57"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.57" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.59"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage3]/ret.59" -> "TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool1]/8420"
+	"TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool1]/8420" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.61"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.61" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.65"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.65" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.67"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.67" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.71"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.71" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.73"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.71" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.79"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.73" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.77"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.77" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.105"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.79" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.83"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.83" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.85"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.83" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.97"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.85" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.89"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.89" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.91"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.91" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.95"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.95" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.97"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.97" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.99"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.99" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.103"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.103" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.105"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage4]/ret.105" -> "TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool2]/8653"
+	"TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool2]/8653" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.107"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.107" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.111"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/LeakyReLU[2]/ret.111" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.113"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.113" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.117"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.117" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.119"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/LeakyReLU[2]/ret.117" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.125"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.119" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.123"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/LeakyReLU[2]/ret.123" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.151"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.125" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.129"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.129" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.131"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/LeakyReLU[2]/ret.129" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.143"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.131" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.135"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv3]/Sequential[layers]/LeakyReLU[2]/ret.135" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.137"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.137" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.141"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/LeakyReLU[2]/ret.141" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.143"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.143" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.145"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/Conv2d[0]/ret.145" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.149"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/Conv2dBatchLeaky[conv5]/Sequential[layers]/LeakyReLU[2]/ret.149" -> "TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.151"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.151" -> "TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool3]/8886"
+	"TinyYoloV4/CSPTiny[backbone]/CSPBlock[stage5]/ret.151" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/Conv2d[0]/ret.177"
+	"TinyYoloV4/CSPTiny[backbone]/MaxPool2d[pool3]/8886" -> "TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/Conv2d[0]/ret.153"
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/Conv2d[0]/ret.153" -> "TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/LeakyReLU[2]/ret.157"
+	"TinyYoloV4/CSPTiny[backbone]/Conv2dBatchLeaky[stage6]/Sequential[layers]/LeakyReLU[2]/ret.157" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/Conv2d[0]/ret.159"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/Conv2d[0]/ret.159" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/LeakyReLU[2]/ret.163"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/LeakyReLU[2]/ret.163" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/Conv2d[0]/ret.165"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block1]/Sequential[layers]/LeakyReLU[2]/ret.163" -> "TinyYoloV4/Neck[neck]/Upsample[upsample]/ret.183"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/Conv2d[0]/ret.165" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/LeakyReLU[2]/ret.169"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[first_block2]/Sequential[layers]/LeakyReLU[2]/ret.169" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/Conv2d[0]/ret.171"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/Conv2d[0]/ret.171" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/LeakyReLU[2]/ret.175"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv1]/Sequential[layers]/LeakyReLU[2]/ret.175" -> "TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.199"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/Conv2d[0]/ret.177" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/LeakyReLU[2]/ret.181"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block1]/Sequential[layers]/LeakyReLU[2]/ret.181" -> "TinyYoloV4/Neck[neck]/ret.185"
+	"TinyYoloV4/Neck[neck]/Upsample[upsample]/ret.183" -> "TinyYoloV4/Neck[neck]/ret.185"
+	"TinyYoloV4/Neck[neck]/ret.185" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/Conv2d[0]/ret.187"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/Conv2d[0]/ret.187" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/LeakyReLU[2]/ret.191"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[sec_block2]/Sequential[layers]/LeakyReLU[2]/ret.191" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/Conv2d[0]/ret.193"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/Conv2d[0]/ret.193" -> "TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/LeakyReLU[2]/ret.197"
+	"TinyYoloV4/Neck[neck]/Conv2dBatchLeaky[pointconv2]/Sequential[layers]/LeakyReLU[2]/ret.197" -> "TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.211"
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.199" -> "TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.203"
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.203" -> "TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.205"
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.205" -> "TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.209"
+	"TinyYoloV4/Head[head]/Sequential[out1]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.209" -> "TinyYoloV4/ret.233"
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.211" -> "TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.215"
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[0]/Sequential[layers]/LeakyReLU[2]/ret.215" -> "TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.217"
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.217" -> "TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.221"
+	"TinyYoloV4/Head[head]/Sequential[out2]/Conv2dBatchLeaky[1]/Sequential[layers]/LeakyReLU[2]/ret.221" -> "TinyYoloV4/ret"
+	"TinyYoloV4/ret.233" -> return_0
+	"TinyYoloV4/ret" -> return_0
+}

@@ -15,42 +15,28 @@ import numpy as np
 from dpu_utils import process_preds, non_max_suppression
 
 
-SCALE = [32, 16, 8]
-S = [13, 26, 52]
+SCALE = [32, 16]
+S = [13, 26]
 
 ANCHORS = (
     np.array(
         [
-            [(0.28, 0.22), (0.38, 0.48), (0.9, 0.78)],
-            [(0.07, 0.15), (0.15, 0.11), (0.14, 0.29)],
-            [(0.02, 0.03), (0.04, 0.07), (0.08, 0.06)],
+            [
+                [0.04669265, 0.07010818],
+                [0.08200667, 0.11690065],
+                [0.19566397, 0.2667503],
+            ],
+            [
+                [0.01401189, 0.02136289],
+                [0.02018682, 0.03110242],
+                [0.02997164, 0.04524642],
+            ],
         ]
     )
     * np.array([[S]]).T
 )  # Scaling up to S range
 
-CLASSES = [
-    "person",
-    "bird",
-    "cat",
-    "cow",
-    "dog",
-    "horse",
-    "sheep",
-    "aeroplane",
-    "bicycle",
-    "boat",
-    "bus",
-    "car",
-    "motorbike",
-    "train",
-    "bottle",
-    "chair",
-    "diningtable",
-    "pottedplant",
-    "sofa",
-    "tvmonitor",
-]
+CLASSES = ["face"]
 
 W, H = 416, 416
 
@@ -58,7 +44,7 @@ MEANS = np.array([0.485, 0.456, 0.406])
 STD = np.array([0.229, 0.224, 0.225])
 
 
-def runYolo(dpu_runner, image, frame, out, conf=0.85):
+def runYolo(dpu_runner, image, frame, conf=0.8):
     im = frame  # to plot boxes on org image
 
     inputTensors = dpu_runner.get_input_tensors()  #  get the model input tensor
@@ -75,14 +61,8 @@ def runYolo(dpu_runner, image, frame, out, conf=0.85):
     outputanchors_1 = outputTensors[1].dims[3]
     outputpreds_1 = outputTensors[1].dims[4]
 
-    outputHeight_2 = outputTensors[2].dims[1]
-    outputWidth_2 = outputTensors[2].dims[2]
-    outputanchors_2 = outputTensors[2].dims[3]
-    outputpreds_2 = outputTensors[2].dims[4]
-
     outputSize_0 = [outputHeight_0, outputWidth_0, outputanchors_0, outputpreds_0]
     outputSize_1 = [outputHeight_1, outputWidth_1, outputanchors_1, outputpreds_1]
-    outputSize_2 = [outputHeight_2, outputWidth_2, outputanchors_2, outputpreds_2]
 
     runSize = 1
     shapeIn = (runSize,) + tuple(
@@ -107,13 +87,6 @@ def runYolo(dpu_runner, image, frame, out, conf=0.85):
             order="C",
         )
     )
-    outputData.append(
-        np.empty(
-            tuple([runSize] + outputSize_2),
-            dtype=np.float32,
-            order="C",
-        )
-    )
 
     # input should also be list.
     inputData.append(np.empty((shapeIn), dtype=np.float32, order="C"))
@@ -134,8 +107,7 @@ def runYolo(dpu_runner, image, frame, out, conf=0.85):
     """Post Processing"""
 
     # processing rawoutputs of model and converting from tensors(in range 0-1) to pixel values for bb
-
-    outputData = reversed(outputData)
+    # outputData = reversed(outputData)
     output_list = process_preds(outputData, S, SCALE, anchor_boxes=ANCHORS)
 
     # filtering outputs based on confidance
@@ -148,7 +120,7 @@ def runYolo(dpu_runner, image, frame, out, conf=0.85):
 
     # Perform Non Max Supression
 
-    bboxes, pred_conf, pred_labels = non_max_suppression(output_arr, iou_threshold=0.4)
+    bboxes, pred_conf, pred_labels = non_max_suppression(output_arr, iou_threshold=0.1)
 
     print("Output Boxes:", bboxes, "Confidance:", pred_conf, "Classes:", pred_labels)
 
@@ -199,16 +171,9 @@ def runYolo(dpu_runner, image, frame, out, conf=0.85):
             2,
         )
 
-    # Save generated image with detections
-    # output_path = f"test_results/{name}"
-    # cv2.imwrite(output_path, im)
-    cv2.resize(frame, (640, 480))
-    out.write(im)
-
-    # # Display image
-    # cv2.imshow("Predictions", im)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    cv2.imshow("Predictions", im)
+    cv2.waitKey(1)
+    return
 
 
 def get_child_subgraph_dpu(graph: "Graph") -> List["Subgraph"]:
@@ -252,23 +217,24 @@ def preprocess_one_image_fn(image):
 def main(argv):
     src = argv[2]
     cap = cv2.VideoCapture(src)
+    threadnum = 3
 
-    filename = "output.avi"
-    fourcc = cv2.VideoWriter_fourcc(*"XVID")  # Codec
-    fps = 20.0  # Frames per second
-    target_frame_size = (640, 480)  # Target frame size (width, height)
+    # fourcc = cv2.VideoWriter_fourcc(*"XVID")  # Codec
+    # fps = 20.0  # Frames per second
+    # target_frame_size = (640, 480)  # Target frame size (width, height)
 
-    out = cv2.VideoWriter(filename, fourcc, fps, target_frame_size)
+    # out = cv2.VideoWriter(filename, fourcc, fps, target_frame_size)
 
     if not cap.isOpened():
         print("Cannot open camera!")
         exit()
 
-    if not out.isOpened():
-        print("Error: Could not open VideoWriter.")
+    # if not out.isOpened():
+    #     print("Error: Could not open VideoWriter.")
 
     while True:
         ret, frame = cap.read()
+        threadAll = []
 
         if not ret:
             print("Cannot recieve frame, exiting...")
@@ -278,20 +244,26 @@ def main(argv):
 
         g = xir.Graph.deserialize(argv[1])  # Deserialize the DPU graph
         subgraphs = get_child_subgraph_dpu(g)  # Extract DPU subgraphs from the graph
-        assert len(subgraphs) == 1  # only one DPU kernel
+        assert len(subgraphs) == 1  # only one DPU kerne
 
-        time_start = time.time()
-
+        all_dpu_runners = []
         """Creates DPU runner, associated with the DPU subgraph."""
-        dpu_runner = vart.Runner.create_runner(subgraphs[0], "run")
+        for i in range(int(threadnum)):
+            all_dpu_runners.append(vart.Runner.create_runner(subgraphs[0], "run"))
 
-        runYolo(dpu_runner, image, frame, out)
+        for i in range(int(threadnum)):
+            t1 = threading.Thread(
+                target=runYolo, args=(all_dpu_runners[i], image, frame)
+            )
+            threadAll.append(t1)
 
-        if cv2.waitKey(1) == ord("q"):
-            break
+        for x in threadAll:
+            x.start()
+        for x in threadAll:
+            x.join()
 
     cap.release()
-    out.release()
+    # out.release()
     cv2.destroyAllWindows()
     del dpu_runner
 

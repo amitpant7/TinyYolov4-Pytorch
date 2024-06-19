@@ -88,8 +88,10 @@ class YoloV4_Loss(torch.nn.Module):
         super().__init__()
         self.device = device
         self.lambda_no_obj = torch.tensor(1.0, device=device)
-        self.lambda_obj = torch.tensor(10.0, device=device)
-        self.lambda_class = torch.tensor(10.0, device=device)  # 7 without focal
+        self.lambda_obj = torch.tensor(
+            10.0, device=device
+        )  #  # around 10 is working fine
+        self.lambda_class = torch.tensor(0.0, device=device)  # 7 without focal
         self.lambda_bb = torch.tensor(1.5, device=device)
 
         self.C = C
@@ -174,17 +176,17 @@ class YoloV4_Loss(torch.nn.Module):
                 # class loss
 
                 # class_loss = self.logistic_loss(pred[obj][..., 5:], ground_truth[obj][..., 5:])
-                smoothed_class = label_smoothing(
-                    ground_truth[obj][..., 5:], smoothing_factor=0.1
-                )
-                class_loss = self.focal(pred[obj][..., 5:], smoothed_class)
+                #                 smoothed_class = label_smoothing(
+                #                     ground_truth[obj][..., 5:], smoothing_factor=0.1
+                #                 )
+                #                 class_loss = self.focal(pred[obj][..., 5:], smoothed_class)
 
                 # Total loss calculation with weighted components
                 loss = (
                     self.lambda_bb * bb_cord_loss
                     + self.lambda_obj * obj_loss
                     + self.lambda_no_obj * noobj_loss
-                    + self.lambda_class * class_loss
+                    #                     + self.lambda_class * class_loss
                 )
 
                 losses.append(loss)
@@ -198,7 +200,7 @@ class YoloV4_Loss(torch.nn.Module):
 
                 losses.append(loss)
 
-        #             print("Loss Values", bb_cord_loss.item(),obj_loss.item(), noobj_loss.item(), class_loss.item())
+        #         print("Loss Values", bb_cord_loss.item(),obj_loss.item(), noobj_loss.item())
         total_loss = torch.stack(losses).sum()
 
         return total_loss

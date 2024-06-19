@@ -10,7 +10,8 @@ import torch
 import torchvision
 
 from model.yolov4 import *
-from .vocdata import *  # or vocdata
+from Inspect_and_quantization.wider import *
+
 
 from tqdm import tqdm
 
@@ -50,12 +51,12 @@ parser.add_argument(
 
 args, _ = parser.parse_known_args()
 
-
-dataset = VOCDataset(root="./data", year="2007", image_set="train", transform=transform)
+dataset = torchvision.datasets.ImageFolder(root="./data", transform=transform)
 
 val_dataset = torch.utils.data.Subset(
     dataset, random.sample(range(0, len(dataset)), args.subset_len)
 )
+
 
 val_loader = torch.utils.data.DataLoader(
     val_dataset,
@@ -85,9 +86,7 @@ def quantization(
         batch_size = 1
         subset_len = 1
 
-    wts = torch.load(file_path, map_location=device)
-    model = TinyYoloV4(num_classes=1)
-    model.load_state_dict(wts)
+    model = torch.load("widerface_tinyyolov4.pth", map_location="cpu")
 
     input = torch.randn([batch_size, 3, 416, 416])
 
@@ -99,7 +98,7 @@ def quantization(
         quantizer = torch_quantizer(quant_mode, model, (input), device=device)
         quant_model = quantizer.quant_model
 
-    for images, bboxes, labels in tqdm(val_loader, leave=False):
+    for images, label in tqdm(val_loader, leave=False):
         images = images.to(device)
         with torch.no_grad():
             quant_model(images)
